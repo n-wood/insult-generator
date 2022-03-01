@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Sample project</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<form>
+    Name<input type="text" id="field_insult_recipient"><button onclick="getInsult()">Get Insult</button>
+</form>
+<script>
+    function getInsult() {
+        var name = document.getElementById("field_insult_recipient").value;
+        var url = "/insult/name/" + name;
+        fetch(url)
+            .then(
+                function(response) {
+                if (response.status !== 200) {
+                    alert("Something went wrong calling " + url + ". Status Code: " +
+                    response.status);
+                    return;
+                }
+
+                response.json().then(function(data) {
+                    alert(data.personToInsult + " is " + data.insultText);
+                });
+                }
+            )
+            .catch(function(err) {
+                console.log("http call failed: ", err);
+            });
+        
+    }
+</script>
+</body>
+</html>

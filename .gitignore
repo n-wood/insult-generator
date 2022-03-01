@@ -2,6 +2,7 @@
    
 # Compiled class file
 *.class
+target/
 
 # Log file
 *.log
@@ -29,6 +30,9 @@ hs_err_pid*
 *.iws
 *.iml
 *.ipr
+
+#vscode
+.vscode
 
 ### MAC OS
 .DS_Store
